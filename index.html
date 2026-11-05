@@ -148,5 +148,25 @@ Campbell, C, Cristiani, N and Smola, A (2000), Query learning with large margin 
 In: Proc. 17th Internat. Conf. on Machine Learning. Morgan Kaufman, Stanford, CA,111-118.
 </pre>
 </p>
+   
+<button id="colorButton">Click me to change colour</button>
+
+<script>
+  // Get a reference to the button element
+  var button = document.getElementById("colorButton");
+
+  // Function to change the button color
+  function changeColor() {
+    // Generate a random color
+    var randomColor = "#" + Math.floor(Math.random()*16777215).toString(16);
+
+    // Set the button's background color
+    button.style.backgroundColor = randomColor;
+  }
+
+  // Add a click event listener
+  button.addEventListener("click", changeColor);
+</script>
+
 </body>
 </html>
