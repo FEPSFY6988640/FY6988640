@@ -242,44 +242,27 @@ Warn and Ryan (2012) — A Review of Seismic Isolation for Buildings: Historical
 <hr>
 
 
+
 <script>
-  // Count words in one section
-  function displayWordCount(sectionId) {
-    const element = document.getElementById(sectionId);
+function displayTotalWordCount() {
+  const start = document.getElementById('Introduction');
+  const end = document.getElementById('References');
 
-    if (!element) {
-      console.error("Missing section: " + sectionId);
-      return 0;
-    }
+  let text = '';
+  let element = start.nextElementSibling;
 
-    const text = element.textContent.trim();
-    if (text === "") return 0;
-
-    return text.split(/\s+/).length;
+  while (element && element !== end) {
+    text += ' ' + element.textContent;
+    element = element.nextElementSibling;
   }
 
-  // Count all article sections excluding Abstract and References
-  function displayTotalWordCount() {
-    const sections = [
-      'Introduction_InText',
-      'Works_InText',
-      'Types_InText',
-      'Advantages_InText',
-      'Limitations_InText',
-      'Conclusion_InText'
-    ];
+  const words = text.trim().split(/\s+/).filter(Boolean);
 
-    let total = 0;
+  document.getElementById('totalWordCount').innerText =
+    'Total word count: ' + words.length;
+}
 
-    sections.forEach(function(sectionId) {
-      total += displayWordCount(sectionId);
-    });
-
-    document.getElementById('totalWordCount').innerText =
-      'Total word count: ' + total;
-  }
-
-  window.addEventListener('DOMContentLoaded', displayTotalWordCount);
+window.addEventListener('DOMContentLoaded', displayTotalWordCount);
 </script>
 
 
