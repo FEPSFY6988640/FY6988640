@@ -105,7 +105,7 @@ Figure 1 shows the comparison between conventional building and base isolated bu
 By enabling controlled horizontal movement and minimizing building vibrations ,base isolation can improve the ability of buildings to resist earthquake force and reduce risk of damage
 </p>
 <h3 id="Types">Types of Base Isolators</h3>
-  <p>
+  <p id="Types_InText">
     Laminated rubber bearings are made of alternating layers of rubber and steel .The rubber allows horizontal flexibility whereas steel layer help withstand weight of the building
 Lead-rubber bearings are similar to laminated rubber bearings but have lead core in the center. The lead core dissipates earthquake energy through deformation helping to control excessive vibrations .
 Friction pendulum systems use curved surfaces that allow sliding to allow horizontal movement during earthquakes . Friction dissipates energy, while the curved surface helps the building to return toward it initial position .
@@ -114,19 +114,19 @@ Engineers  choose various types of base isolators based on factors such as weigh
 Lead-rubber bearings also contain a lead core, which helps dissipate earthquake energy during deformation (Warn and Ryan, 2012).
 </p>
    <h3 id="Advantages">Advantages of Base Isolation</h3>
-   <p>
+   <p id="Advantages_InText">
      By allowing controlled horizontal movement, base isolators can reduce the forces affecting the building during earthquakes. By reducing the earthquake forces acting on a building, base isolation can minimise structural damage to important components such as columns, beams and walls. Base isolation can also Increase protection of occupants and reduce equipment damage inside the buildings by minimising  the vibrations transmitted through the structure. This is especially useful for hospitals, where sensitive medical equipment could be harmed during earthquakes. Another benefit of base isolation is that it can help essential buildings continue operating, after earthquakes by reducing structural damage and protecting equipment.
 Çelebi (1996) reported that the highest storey drift ratio of the base-isolated USC hospital was limited to10% of the allowable limit during the 1994 Northridge earthquake, helping explain why no damage to the building's structure.
 This is particularly important for hospitals, where maintaining essential services can help protect people's lives.
 </p>
    <h3 id="Limitations">Limitations of Base Isolation</h3>
-    <p>
+    <p id="Limitations_InText">
       One disadvantage of base isolation is expensive installation, as specialized materials and engineering techniques are needed . Base isolation may not be appropriate for all buildings because its performance is influenced by factors such as building height, structural design and foundation conditions. Without adequate clearance, the building may collide with nearby building , potentially causing damage. The effectiveness of base isolation can also rely  on earthquake characteristics, including the intensity, frequency and duration of ground shaking. Incorrect installation or inadequate maintenance may limit their performance and raise  the risk of structural damage.
 Base isolation can increase the horizontal displacement experienced at the isolation level, meaning that sufficient space must be provided to accommodate this movement (Warn and Ryan, 2012).
 In general, these disadvantages highlight although base isolation can improve earthquake resistance, its effectiveness depends on appropriate structural design, seismic conditions and regular maintenance.
 </p>
    <h3 id="Conclusion">Conclusion</h3>
-  <p> 
+  <p id="Conclusion_InText">
     This article has explored how base isolation improved the earthquake resistance of buildings . Base isolation works by allowing buildings to control horizontal movement and increasing a building's natural period, base isolation can reduce the seismic forces transmitted from the ground into the building . The key benefits of base isolation include  limiting structural damage, improving occupant safety and helping essential buildings remain operational after earthquakes. Despite these advantages, base isolation has certain limitations such as expensive installation the need for Sufficient clearance for movement and varying effectiveness depending on earthquake conditions. Taking both the advantages and limitations into consideration, base isolation can significantly improve buildings earthquake resistance, provided that the system is appropriately designed for the structure and expected seismic conditions.
   
 <pre>
@@ -175,42 +175,7 @@ Warn and Ryan (2012) — A Review of Seismic Isolation for Buildings: Historical
   // Add a click event listener
   button.addEventListener("click", changeColor);
 </script>
-<div id="chart_div"></div>
-   
-<script type="text/javascript">
-  google.charts.load('current', {'packages':['corechart']});
-  google.charts.setOnLoadCallback(drawChart);
 
-  
-function drawChart() {
-  var data = new google.visualization.DataTable();
-
-  data.addColumn('number', 'Age');
-  data.addColumn('number', 'Salary');
-
-  data.addRows([
-    [25, 40000],
-    [30, 50000],
-    [35, 60000],
-    [40, 75000],
-    [45, 80000],
-    [50, 90000]
-  ]);
-
-  var options = {
-    title: 'Age vs. Salary',
-    hAxis: { title: 'Age' },
-    vAxis: { title: 'Salary' }
-  };
-
-  var chart = new google.visualization.ScatterChart(
-    document.getElementById('chart_div')
-  );
-
-  chart.draw(data, options);
-}
-
-</script>
 
 
 <!-- Adding last update -->
@@ -276,30 +241,47 @@ function drawChart() {
 
 <hr>
 
-<script>
-  // Function to calculate and display word count for a specific section
-  function displayWordCount(sectionId, outputId) {
-    const text = document.getElementById(sectionId).textContent;
-    const words = text.trim().split(/\s+/).filter(word => word.length > 0);
-    const wordCount = words.length;
 
-    return wordCount;
+<script>
+  // Count words in one section
+  function displayWordCount(sectionId) {
+    const element = document.getElementById(sectionId);
+
+    if (!element) {
+      console.error("Missing section: " + sectionId);
+      return 0;
+    }
+
+    const text = element.textContent.trim();
+    if (text === "") return 0;
+
+    return text.split(/\s+/).length;
   }
 
-  // Function to calculate and display total word count from selected sections
+  // Count all article sections excluding Abstract and References
   function displayTotalWordCount() {
-    const introductionCount = displayWordCount('Introduction_InText');
-    const analysisCount = displayWordCount('Analysis_InText');
+    const sections = [
+      'Introduction_InText',
+      'Works_InText',
+      'Types_InText',
+      'Advantages_InText',
+      'Limitations_InText',
+      'Conclusion_InText'
+    ];
 
-    const totalWordCount = introductionCount + analysisCount;
+    let total = 0;
+
+    sections.forEach(function(sectionId) {
+      total += displayWordCount(sectionId);
+    });
 
     document.getElementById('totalWordCount').innerText =
-      `Total word count: ${totalWordCount}`;
+      'Total word count: ' + total;
   }
 
-  // Run the function on page load
   window.addEventListener('DOMContentLoaded', displayTotalWordCount);
 </script>
+
 
 </body>
 </html>
